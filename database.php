@@ -11,3 +11,4 @@ $koneksi = new mysqli($hostname, $username, $password, $database);
 if ($koneksi->connect_error) {
     die("Koneksi database gagal: " . $koneksi->connect_error);
 }
+echo "berhasil";

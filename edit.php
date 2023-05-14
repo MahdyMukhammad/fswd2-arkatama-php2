@@ -11,17 +11,19 @@
 <body>
     <?php
     include "database.php";
-    ?>
-    <form action="list.php" method="get">
+    $id = $_GET['id'];
+    echo "<h1>Edit PENGGUNA : $id  </h1>";
+    echo '<form action="listedit.php?id=' . $id . '"  method="post" enctype = "multipart/form-data" >';
+
+    echo '
         <div class="container">
-            <h1>EDIT PENGGUNA</h1>
             <div class="col" style="margin: 20px;">
                 <label class="namem-label" for="id">Id Pengguna</label>
                 <input type="text" class="form-control" id="id" name="id" placeholder="Id">
             </div>
             <div class="mb-3" style="margin: 20px;">
                 <label class="form-label" for="formGroup">NAMA</label>
-                <input type="text" class="form-control" id="formGroup" placeholder="Masukkan Nama Anda" name="nama">
+                <input type="text" class="form-control" id="formGroup" placeholder="Masukkan Nama Anda" name="name">
             </div>
             <div class="row" style="margin: 20px;">
                 <div class="col">
@@ -30,6 +32,7 @@
                         <option selected>Pilih Role</option>
                         <option value="Admin">Admin</option>
                         <option value="Staff">Staff</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
                 <div class="col">
@@ -53,13 +56,15 @@
             </div>
             <div class="mb-3" style="margin: 20px;">
                 <label class="form-label" for="formFile">UNGGAH FOTO</label>
-                <input class="form-control" type="file" id="formFile" name="foto">
+                <input class="form-control" type="file" id="formFile" name="foto" accept="image/png, image/jpg, image/jpeg>
             </div>
-            <div>
-                <input type="submit" name="submit" value="Tambah Pengguna">
+             <br>
+            <div class=" col-12">
+                <button type=" submit" name="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-    </form>
+    </form>'
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

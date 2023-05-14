@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta nama="viewport" content="width=device-width, initial-scale=1.0">
     <title>List User</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
@@ -18,7 +18,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Aksi</th>
                 <th scope="col">Avatar</th>
-                <th scope="col">Nama</th>
+                <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Role</th>
@@ -27,18 +27,18 @@
         <tbody>
             <?php
             include "database.php";
-            $sql_list = "select id, avatar, name, email, phone, `role` from user u;";
+            $list = "select id, avatar, name, email, no_hp, role from user u;";
 
-            $result = $koneksi->query($sql_list);
+            $hasil_list = $koneksi->query($list);
 
-            while ($row = mysqli_fetch_array($result)) {
+            while ($row = mysqli_fetch_array($hasil_list)) {
                 echo "<tr>
     <th scope='row'>" . $row['id'] . "</th>
     <td>
         <div class='btn-group' role='group' aria-label='Basic mixed styles example'>
-            <button type='button' class='btn btn-success'>Detail</button>
-            <button type='button' class='btn btn-warning'>Edit</button>
-            <button type='button' class='btn btn-danger'>Hapus</button>
+            <button type='button' class='btn btn-success'><a href=detail.php?id=" . $row['id'] . ">Detail</a></button>
+            <button type='button' class='btn btn-warning'><a href=edit.php?id=" . $row['id'] . ">Edit</a></button>
+            <button type='button' class='btn btn-danger'><a href=hapus.php?id=" . $row['id'] . ">Hapus</a></button>
         </div>
     </td>
     <td>";
@@ -49,7 +49,7 @@
                     echo "<img src='image/" . $row['avatar'] . "' width='100px'>";
                 }
                 echo "</td>
-    <td>" . $row['nama'] . "</td>
+    <td>" . $row['name'] . "</td>
     <td>" . $row['email'] . "</td>
     <td>" . $row['no_hp'] . "</td>
     <td>" . $row['role'] . "</td>

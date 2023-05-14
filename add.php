@@ -9,11 +9,8 @@
 </head>
 
 <body>
-    <?php
-    include "database.php";
-    ?>
-    <form action="list.php" method="get">
-        <div class="container">
+    <form action="user.php" method="post" enctype="multipart/form-data">
+        <div class=" container">
             <h1>TAMBAH PENGGUNA</h1>
             <div class="col" style="margin: 20px;">
                 <label class="namem-label" for="id">Id Pengguna</label>
@@ -21,7 +18,7 @@
             </div>
             <div class="mb-3" style="margin: 20px;">
                 <label class="form-label" for="formGroup">NAMA</label>
-                <input type="text" class="form-control" id="formGroup" placeholder="Masukkan Nama Anda" name="nama">
+                <input type="text" class="form-control" id="formGroup" placeholder="Masukkan Nama Anda" name="name">
             </div>
             <div class="row" style="margin: 20px;">
                 <div class="col">
@@ -30,6 +27,7 @@
                         <option selected>Pilih Role</option>
                         <option value="Admin">Admin</option>
                         <option value="Staff">Staff</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
                 <div class="col">
@@ -53,13 +51,16 @@
             </div>
             <div class="mb-3" style="margin: 20px;">
                 <label class="form-label" for="formFile">UNGGAH FOTO</label>
-                <input class="form-control" type="file" id="formFile" name="foto">
-            </div>
-            <div>
-                <input type="submit" name="submit" value="Tambah Pengguna">
+                <input class="form-control" type="file" id="formFile" name="foto" accept="image/png, image/jpg, image/jpeg>
+            </div> 
+            <div class=" col-12">
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>
+    <?php
+    include "database.php";
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
