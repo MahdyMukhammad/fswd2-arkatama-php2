@@ -1,9 +1,21 @@
-  <?php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pengguna</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Hasil Edit Pengguna</h1>
+    <?php
     if (isset($_POST['submit']) && isset($_FILES['avatar'])) {
         include "database.php";
-        echo "Halaman User. <br>";
 
-        $id = $_POST['id'];
+        $id = $_GET['id'];
         $name = $_POST['name'];
         $role = $_POST['role'];
         $password = $_POST['password'];
@@ -13,21 +25,15 @@
         $avatar = $_FILES['avatar']['name'];
         $avatar_tmp = $_FILES['avatar']['tmp_name'];
 
-        echo "avatar name = " . $avatar;
-        echo "avatar tmp =  " . $avatar_tmp;
-        echo "<br>";
-
         $img_ex = pathinfo($avatar, PATHINFO_EXTENSION);
         $img_ex_lc = strtolower($img_ex);
         $avatarname = uniqid("IMG-", true) . '.' . $img_ex_lc;
 
-        echo "avatar name new = " . $avatarname;
-
-        $update = "UPDATE user SET email = '$email', name = '$name', `role` = '$role', avatar = '$avatarName', no_hp = '$no_hp', alamat = '$alamat', password = '$password'";
+        $update = "UPDATE user SET email = '$email', name = '$name', `role` = '$role', avatar = '$avatarname', no_hp = '$no_hp', alamat = '$alamat', password = '$password'";
 
         if ($koneksi->query($update) === TRUE) {
             echo "Insert user Successfully <br>";
-            $img_upload_path = 'image/' . $avatarname;
+            $img_upload_path = 'img/' . $avatarname;
             move_uploaded_file($avatar_tmp, $img_upload_path);
         } else {
             echo "Error: " . $update . "<br>" . $koneksi->error;
@@ -37,16 +43,45 @@
         $result = $koneksi->query($sql_read);
 
         $row = mysqli_fetch_array($result);
-        echo "id = " . $row['id'] . "<br>
-    email = " . $row['email'] . "<br>
-    name = " . $row['name'] . "<br>
-    role = " . $row['role'] . "<br>
-    avatar = <img src='image/" . $row['avatar'] . "' width = 150px> <br>
-    no_hp = " . $row['no_hp'] . "<br>
-    alamat = " . $row['alamat'] . "<br>
-    password = " . $row['password'] . "<br>
-    created_at = " . $row['created_at'] . "<br>
-    updated_at = " . $row['updated_at'];
-    } else {
-        echo "error";
+        echo "<table class ='table'>
+        <thead>
+            <tr class='table-primary'>
+                <th scope='col'>ID</th>
+                <th scope='col'>Aksi</th>
+                <th scope='col'>Avatar</th>
+                <th scope='col'>Nama</th>
+                <th scope='col'>Email</th>
+                <th scope='col'>NO HP</th>
+                <th scope='col'>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope='row'>" . $row['id'] . "</th>
+                <td>
+                    <div class='btn-group' role='group' aria-label='Basic mixed styles example'>
+                        <button type='button' class='btn btn-success'><a href=detail.php?id=" . $row['id'] . ">Detail</a></button>
+                        <button type='button' class='btn btn-warning'><a href=edit.php?id=" . $row['id'] . ">Edit</a></button>
+                        <button type='button' class='btn btn-danger'><a href=hapus.php?id=" . $row['id'] . ">Hapus</a></button>
+                    </div>
+                </td>
+                <td>";
+        if ($row['avatar'] == null) {
+            echo "<img src='img/avatar.png' alt='' width='100px'>";
+        } else {
+            echo "<img src='img/" . $row['avatar'] . "' width='100px'>";
+        }
+        echo "</td>
+                <td>" . $row['name'] . "</td>
+                <td>" . $row['email'] . "</td>
+                <td>" . $row['no_hp'] . "</td>
+                <td>" . $row['role'] . "</td>
+            </tr>
+        </tbody>";
     }
+    echo "<br> <a href='list.php'><button type='button' class='btn btn-success'>List User</button></a>";
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+
+</html>

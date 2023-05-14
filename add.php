@@ -13,7 +13,7 @@
         <div class=" container">
             <h1>TAMBAH PENGGUNA</h1>
             <div class="col" style="margin: 20px;">
-                <label class="namem-label" for="id">Id Pengguna</label>
+                <label class="namem-label" for="id">ID Pengguna</label>
                 <input type="text" class="form-control" id="id" name="id" placeholder="Id">
             </div>
             <div class="mb-3" style="margin: 20px;">
@@ -27,7 +27,7 @@
                         <option selected>Pilih Role</option>
                         <option value="Admin">Admin</option>
                         <option value="Staff">Staff</option>
-                        <option value="Other">Other</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
                 <div class="col">
@@ -51,7 +51,7 @@
             </div>
             <div class="mb-3" style="margin: 20px;">
                 <label class="form-label" for="formFile">UNGGAH FOTO</label>
-                <input class="form-control" type="file" id="formFile" name="foto" accept="image/png, image/jpg, image/jpeg>
+                <input class="form-control" type="file" id="formFile" name="avatar" accept="image/png, image/jpg, image/jpeg>
             </div> 
             <div class=" col-12">
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>

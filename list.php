@@ -20,7 +20,7 @@
                 <th scope="col">Avatar</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Phone</th>
+                <th scope="col">NO HP</th>
                 <th scope="col">Role</th>
             </tr>
         </thead>
@@ -42,11 +42,10 @@
         </div>
     </td>
     <td>";
-
                 if ($row['avatar'] == null) {
                     echo "<img src='img/avatar.png' alt='' width='100px'>";
                 } else {
-                    echo "<img src='image/" . $row['avatar'] . "' width='100px'>";
+                    echo "<img src='img/" . $row['avatar'] . "' width='100px'>";
                 }
                 echo "</td>
     <td>" . $row['name'] . "</td>

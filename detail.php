@@ -13,7 +13,7 @@ echo "
 if ($row['avatar'] == null) {
     echo "<img src = 'img/avatar.png' alt=''  width='100px'> <br>";
 } else {
-    echo "<img src='image/" . $row['avatar'] . "' width='100px'> <br>";
+    echo "<img src='img/" . $row['avatar'] . "' width='100px'> <br>";
 }
 echo "
     no_hp = " . $row['no_hp'] . "<br>

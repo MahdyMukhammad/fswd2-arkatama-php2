@@ -32,7 +32,7 @@
                         <option selected>Pilih Role</option>
                         <option value="Admin">Admin</option>
                         <option value="Staff">Staff</option>
-                        <option value="Other">Other</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
                 <div class="col">
@@ -56,7 +56,7 @@
             </div>
             <div class="mb-3" style="margin: 20px;">
                 <label class="form-label" for="formFile">UNGGAH FOTO</label>
-                <input class="form-control" type="file" id="formFile" name="foto" accept="image/png, image/jpg, image/jpeg>
+                <input class="form-control" type="file" id="formFile" name="avatar" accept="image/png, image/jpg, image/jpeg>
             </div>
              <br>
             <div class=" col-12">
